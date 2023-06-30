@@ -6,15 +6,18 @@
 import "./Child.css";
 
 // const Child = (props) => {
-const Child = ({ color: c = 'green' }) => {
+const Child = ({ color: c = 'green', num, fn, bool, obj }) => {
   //           ^^^^^ 分割代入でも書ける { color }
   //                 デフォルト値も設定できる { color = 'green' }
   // 呼び出し先で渡したプロパティがpropsで受け取れる
-  // console.log(props);
+  // console.log(fn('props'));
   return (
     <div className={`component ${c}`}>
       {/*                        ^^^^^^^^^^^ 分割代入の場合はcolor */}
       <h3>Hello Component</h3>
+      <h3>{num}</h3>
+      {/* <h3>{fn('Props')}</h3> */}
+      <h3>{bool ? 'true' : 'false'}</h3>
     </div>
   );
 };
