@@ -4,6 +4,11 @@ const Bye = () => {
       return <h2>GoodBye!</h2>;
 }
 
+// Babelで変換
+// const Bye = () => {
+//   return /*#__PURE__*/React.createElement("h2", null, "GoodBye!");
+// };
+
 const Example = () => {
   return (
     <div>
@@ -11,6 +16,11 @@ const Example = () => {
     </div>
   );
 };
+
+// Babelで変換
+// const Example = () => {
+//   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Bye, null));
+// };
 
 console.log(Example());
 
