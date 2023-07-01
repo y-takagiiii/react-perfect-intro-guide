@@ -1,6 +1,8 @@
 # package
 **/node_modules/
 
+**/public/
+
 # mac
 .DS_Store
 
