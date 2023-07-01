@@ -1,11 +1,16 @@
 import React from "react";
 
 const Example = () => {
+  // JSXはあくまでJavaScriptとして扱うので変数に代入可能
   const sample1 = <h1 className="greeting">Hello World</h1>;
+  // 出力可能
+  // console.log(sample1);
+  // console.log((<h1 className="greeting">Hello World</h1>));
 
-  // React.createElement("h1", {
+  // JSXはBabelを通してJavaScriptオブジェクトに変換される
+  // console.log(React.createElement("h1", {
   //   className: "greeting"
-  // }, "Hello World");
+  // }, "Hello World"));
 
   const sample2 = (
     <div>
@@ -14,6 +19,13 @@ const Example = () => {
     </div>
   );
 
+  // Babelで変換
+  // React.createElement("div", null,
+  //   React.createElement("h1", null, "Hello!"),
+  //   React.createElement("h2", null, "Good to see you.")
+  // );
+
+  // オブジェクトなのでpropsも確認できる
   console.log(
     (
       <div>
