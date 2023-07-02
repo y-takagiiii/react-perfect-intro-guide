@@ -6,15 +6,18 @@ const Example = () => {
   // nameプロパティだけを変更する
   // stateで管理しているオブジェクトと同じ構造で更新する必要がある
   const changeName = (e) => {
-    setPerson({ name: e.target.value, age: person.age })
+    // setPerson({ name: e.target.value, age: person.age })
+    // プロパティが複数あるとすべて書くのは面倒なのでスプレッド演算子を使う
+    setPerson({...person, name: e.target.value})
   }
   // ageプロパティだけを変更する
   const changeAge = (e) => {
-    setPerson({ name: person.name, age: e.target.value })
+    // setPerson({ name: person.name, age: e.target.value })
+    setPerson({ ...person, age: e.target.value })
   }
 
   const reset = () => {
-    setPerson({ name: "", age: "" })
+    setPerson({ ...person, age: "", name: "" })
   }
 
   return (
