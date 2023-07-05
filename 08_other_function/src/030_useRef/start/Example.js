@@ -41,11 +41,45 @@ const Case2 = () => {
   );
 };
 
+// useRefもuseStateもどちらも値を保持しておきたいときに使う
+// useRefは再レンダリングされない(関数コンポーネントが実行されない)、useStateは再レンダリングされる
+
+const createTimeStamp = () => new Date().getTime();
+
+const Case3 = () => {
+  const [timeStamp, setTimeStamp] = useState(createTimeStamp());
+  const ref = useRef(createTimeStamp());
+
+  const updateState = () => {
+    setTimeStamp(createTimeStamp());
+  };
+
+  const updateRef = () => {
+    ref.current = createTimeStamp();
+    console.log("ref.current ->", ref.current);
+  };
+
+  return (
+    <div>
+      <h3>ユースケース3</h3>
+      <p>
+        state: {timeStamp}
+        <button onClick={updateState}>更新</button>
+      </p>
+      <p>
+        ref: {ref.current}
+        <button onClick={updateRef}>更新</button>
+      </p>
+    </div>
+  );
+};
+
 const Example = () => {
   return (
     <>
       <Case1 />
       <Case2 />
+      <Case3 />
     </>
   );
 };
