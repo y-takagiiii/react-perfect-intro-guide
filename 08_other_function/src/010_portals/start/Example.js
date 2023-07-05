@@ -22,7 +22,10 @@ const ModalPortal = ({ children }) => {
 const Example = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
+    // <Modal>コンポーネントはReact要素のツリー上は<div>の子要素として存在するが、ModalPortalによってDOMツリーとしては<div className>の子要素として認識される
+    // 下のdivがModalコンポーネントの親要素
     <div>
+      {/* ModalPortalによって下のdivにマウントされる */}
       <div className="container start"></div>
 
       <button
