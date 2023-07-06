@@ -7,6 +7,9 @@ import { useReducer, useState } from "react";
 // useState: コンポーネントで更新用の処理を保持
 // useReducer: stateと一緒に更新用の処理を保持
 
+// useReducerは状態と更新方法をセットで定義しているので、書き換えたときにバグが起きにくい
+// 一方useStateは状態しか管理していないので、書き換えたときに思わぬ挙動になる可能性がある
+
 // 純粋性（純粋関数）
 // 特定の引数に特定の戻り値
 const reducer = (prev, { type, step }) => {
