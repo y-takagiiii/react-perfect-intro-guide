@@ -8,7 +8,8 @@ import { useReducer, useState } from "react";
 // useReducer: stateと一緒に更新用の処理を保持
 
 // useReducerは状態と更新方法をセットで定義しているので、書き換えたときにバグが起きにくい
-// 一方useStateは状態しか管理していないので、書き換えたときに思わぬ挙動になる可能性がある
+// 一方useStateは状態しか管理していない(更新処理はComponentが保持している)ので、書き換えたときに思わぬ挙動になる可能性がある
+// useReducerはstateの更新処理をComponentから切り離すことができる→コードをメンテナンスしやすい
 
 // 純粋性（純粋関数）
 // 特定の引数に特定の戻り値
@@ -26,8 +27,9 @@ const reducer = (prev, { type, step }) => {
 // 不変性（Immutability）
 const Example = () => {
   const [state, setState] = useState(0);
+  // useReducerのの第一引数をconstで定義した関数にしておくこともできる
   const [rstate, dispatch] = useReducer(reducer, 0);
-  
+
   const step = 2;
   const countUp = () => {
     setState((prev) => {
