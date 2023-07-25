@@ -25,7 +25,7 @@ const Example = () => {
   }, []);
 
   console.log("render");
-  
+
   return (
     <>
       <button onClick={() => setState((prev) => prev + 1)}>更新</button>
