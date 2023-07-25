@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import Random from "./Random";
+
 const Example = () => {
   const [isDisp, setIsDisp] = useState(true);
 
@@ -24,10 +26,10 @@ const Timer = () => {
       // console.log('end');
     }
   }, [])
-  
+
   useEffect(() => {
     // console.log('updated');
-    
+
     document.title = 'counter:' + time;
     window.localStorage.setItem('time-key', time);
 
@@ -36,11 +38,26 @@ const Timer = () => {
     }
   }, [time]);
 
+  // useLayoutEffectはuseEffectよりも先に実行される
+  // 
+
+  useLayoutEffect(() => {
+    // ローカルストレージに保存したtime-keyを数値に変換
+    const _time = parseInt(window.localStorage.getItem('time-key'));
+    // _timeが数値だった場合setTime関数を呼び出して状態を更新する
+    if(!isNaN(_time)) {
+      setTime(_time);
+    }
+  }, [])
+
   return (
-    <h3>
-      <time>{time}</time>
-      <span>秒経過</span>
-    </h3>
+    <>
+      <h3>
+        <time>{time}</time>
+        <span>秒経過</span>
+      </h3>
+      <Random />
+    </>
     );
 };
 
