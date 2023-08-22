@@ -22,7 +22,25 @@ const Example = () => {
   // 1 + undefined は NaN(Not a Number)
   // console.log(result1) // => NaN
 
-  const sum2 = (x: number, y: number) =>  x + y;
+  // TSでは、関数の戻り値には型推論が働く
+  // const sum2 = (x: number, y: number) =>  x + y;
+
+  // 明示的に型を示す場合
+  const sum2 = (x: number, y: number): number =>  x + y;
+  const result2 = sum2(10, 20)
+  console.log(result2)
+
+  // 戻り値がない場合の型定義
+  const nothing = (num1: number, num2: number): void => {
+    console.log(num1)
+    console.log(num2)
+  }
+
+  // 関数の型エイリアス
+  type Sum = (x: number, y: number) => number;
+  const sum3: Sum = (x, y) => x + y;
+  const result3 = sum3(4, 5)
+  console.log(result3)
 };
 
 export default Example;
