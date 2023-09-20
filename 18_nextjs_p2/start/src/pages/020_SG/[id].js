@@ -1,12 +1,12 @@
 // ファイル名を[]で囲った場合は、リクエストされたパスに応じて動的にページを生成する「ダイナミックルーティング」を行うファイルになる
 import { useRouter } from "next/router"
 
-export default function Page({ id }) {
+export default function Page({ id, date }) {
   const router = useRouter();
   if (router.isFallback) {
     return <h3>Loading...</h3>
   }
-  return <h3>このページは{id}です。</h3>
+  return <h3>このページは{id}です。{date}</h3>
 }
 
 export async function getStaticPaths() {
@@ -26,9 +26,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const date = new Date;
   return {
     props: {
-      id: params.id
-    }
+      id: params.id,
+      date: date.toJSON()
+    },
+
+    // ISR: revalidateオプションで秒数を指定する
+    // 10秒以内のアクセスではdateの値は更新されない
+    // revalidate: 10
   }
 }
