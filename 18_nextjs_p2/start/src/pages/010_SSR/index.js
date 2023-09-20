@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
 // 下のgetServerSideProps関数が返すpropsオブジェクトのmessageキーを分割代入で引数として取得
-export default function SSR({ message }) {
+// export default function SSR({ message }) {
+export default function SSR() {
   console.log("hello")
-  console.log(message)
+  // console.log(message)
   const [state, setState] = useState('bye');
   const val = 0
 
@@ -22,19 +23,19 @@ export default function SSR({ message }) {
 
 // node.js上で実行される関数
 // 引数contextにはリクエストとレスポンスの情報が渡ってくる
-export async function getServerSideProps(context) {
-  // contextからcookie情報を取得することもできる
-  const { cookie } = context.req.headers;
-  console.log('cookie', cookie)
-  console.log("getServerSideProps executed")
+// export async function getServerSideProps(context) {
+//   // contextからcookie情報を取得することもできる
+//   const { cookie } = context.req.headers;
+//   console.log('cookie', cookie)
+//   console.log("getServerSideProps executed")
 
-  return {
-    // redirectオブジェクトを渡してリダイレクトさせることもできる
-    // redirect: {
-      //   destination: '/',
-      //   permanent: false
-      // },
-    // propsオブジェクトが上のfunction SSRの引数に渡される
-    props: { message: 'From Server Side Props' }
-  }
-}
+//   return {
+//     // redirectオブジェクトを渡してリダイレクトさせることもできる
+//     // redirect: {
+//       //   destination: '/',
+//       //   permanent: false
+//       // },
+//     // propsオブジェクトが上のfunction SSRの引数に渡される
+//     props: { message: 'From Server Side Props' }
+//   }
+// }
