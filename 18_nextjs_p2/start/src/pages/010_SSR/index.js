@@ -6,8 +6,10 @@ export default function SSR() {
   const val = 0
 
   // windowオブジェクトはサーバー側(node.js)には存在しないため、
-  // useEffectを使ってクライアント側で処理するようにする
+  // ブラウザ上の処理はuseEffectを使ってクライアント側で処理するようにする
   useEffect(() => {
+    // node.jsのログにはuseEffect内のconsole.logは出力されない
+    console.log('useEffect')
     window.localStorage.setItem('key', 'val')
   }, []);
 
