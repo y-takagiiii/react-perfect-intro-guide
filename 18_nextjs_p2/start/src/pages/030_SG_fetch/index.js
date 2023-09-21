@@ -1,5 +1,6 @@
 import axios from "axios";
 import ArticleList from "../../components/articleList"
+import Head from "next/head"
 
 export default function Page({ articles }) {
   if(!articles) {
@@ -8,6 +9,9 @@ export default function Page({ articles }) {
 
   return (
     <>
+      <Head>
+        <title>ページ一覧</title>
+      </Head>
       <h3>フェッチ&SG</h3>
       <ArticleList list={articles} />
     </>
