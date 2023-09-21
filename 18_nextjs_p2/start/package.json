@@ -9,9 +9,11 @@
     "build-start": "run-s build start",
     "lint": "next lint",
     "next:export": "next export",
-    "export": "run-s build next:export"
+    "export": "run-s build next:export",
+    "json-server": "npx json-server -w ./mock/db.json -p 4030"
   },
   "dependencies": {
+    "axios": "^1.5.0",
     "next": "12.2.3",
     "npm-run-all": "^4.1.5",
     "react": "18.2.0",
