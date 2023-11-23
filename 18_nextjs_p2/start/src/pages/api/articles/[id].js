@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const JSON_SERVER_URL = "http://localhost:4030/articles";
+const JSON_SERVER_URL = `${process.env.JSON_SERVER_URL}/articles`;
 
 // リクエストURL
 // http://localhsot:4010/api/articles/3など
